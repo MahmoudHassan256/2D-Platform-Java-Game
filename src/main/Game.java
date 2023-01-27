@@ -15,7 +15,7 @@ public class Game implements Runnable {
     private Menu menu;
 
     public final static int TILE_DEFAULT = 32;
-    public final static float SCALE = 1f;
+    public final static float SCALE = 1.5f;
     public final static int TILES_IN_WIDTH = 26;
     public final static int TILES_IN_HEIGHT = 14;
     public final static int TILES_SIZE = (int) (TILE_DEFAULT * SCALE);
@@ -26,8 +26,10 @@ public class Game implements Runnable {
         super();
         initializeClasses();
         gamePanel = new GamePanel(this);
-        gameWindow = new GameWindow(gamePanel);
+        gamePanel.setFocusable(true);
         gamePanel.requestFocus();
+        gameWindow = new GameWindow(gamePanel);
+
         startGameLoop();
 
     }
@@ -51,7 +53,10 @@ public class Game implements Runnable {
             case PLAYING:
                 playing.update();
                 break;
+            case OPTION:
+            case QUIT:
             default:
+                System.exit(0);
                 break;
 
         }

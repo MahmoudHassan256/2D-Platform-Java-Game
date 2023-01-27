@@ -27,10 +27,10 @@ public class KeyBoardInputs implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch(GameState.state){
             case MENU:
-            gamePanel.getGame().getPlaying().keyReleased(e);
+            gamePanel.getGame().getMenu().keyPressed(e);
                 break;
             case PLAYING:
-            gamePanel.getGame().getPlaying().keyReleased(e);
+            gamePanel.getGame().getPlaying().keyPressed(e);
                 break;
             default:
                 break;
@@ -43,10 +43,10 @@ public class KeyBoardInputs implements KeyListener {
     public void keyReleased(KeyEvent e) {
         switch(GameState.state){
             case MENU:
-            gamePanel.getGame().getPlaying().keyPressed(e);
+            gamePanel.getGame().getMenu().keyReleased(e);
                 break;
             case PLAYING:
-            gamePanel.getGame().getPlaying().keyPressed(e);
+            gamePanel.getGame().getPlaying().keyReleased(e);
                 break;
             default:
                 break;

@@ -41,8 +41,8 @@ public class Playing extends State implements Statemetohds {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getButton()==MouseEvent.BUTTON1){
-           player.setAttacking(true);
+        if (e.getButton() == MouseEvent.BUTTON1) {
+            player.setAttacking(true);
         }
     }
 
@@ -76,6 +76,9 @@ public class Playing extends State implements Statemetohds {
                 break;
             case KeyEvent.VK_SPACE:
                 player.setJump(true);
+                break;
+            case KeyEvent.VK_BACK_SPACE:
+                GameState.state = GameState.MENU;
                 break;
         }
     }
