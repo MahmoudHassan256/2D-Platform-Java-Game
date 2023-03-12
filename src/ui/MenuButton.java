@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 import gamestates.GameState;
 import utilz.LoadSave;
+
 import static utilz.Constants.UI.Buttons.*;
 
 public class MenuButton {
@@ -26,7 +27,7 @@ public class MenuButton {
     }
 
     private void intiBounds() {
-        bounds=new Rectangle(xPos-xOffsetCenter,yPos,B_WIDTH,B_HEIGHT);
+        bounds = new Rectangle(xPos - xOffsetCenter, yPos, B_WIDTH, B_HEIGHT);
     }
 
     private void loadImgs() {
@@ -65,17 +66,23 @@ public class MenuButton {
     public void setMousePressed(boolean mousePressed) {
         this.mousePressed = mousePressed;
     }
-    public void applyGameState(){
-        GameState.state=state;
+
+    public void applyGameState() {
+        GameState.state = state;
     }
-    public void resetBollean(){
-        mouseOver=false;
-        mousePressed=false;
+
+    public void resetBollean() {
+        mouseOver = false;
+        mousePressed = false;
+    }
+
+    public GameState getState() {
+        return state;
     }
 
     public Rectangle getBounds() {
         return bounds;
     }
-    
-    
+
+
 }

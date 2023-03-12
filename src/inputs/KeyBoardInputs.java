@@ -7,6 +7,7 @@ import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.UpperCa
 
 import gamestates.GameState;
 import main.GamePanel;
+
 import static utilz.Constants.Directions.*;
 
 public class KeyBoardInputs implements KeyListener {
@@ -25,12 +26,15 @@ public class KeyBoardInputs implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        switch(GameState.state){
+        switch (GameState.state) {
             case MENU:
-            gamePanel.getGame().getMenu().keyPressed(e);
+                gamePanel.getGame().getMenu().keyPressed(e);
                 break;
             case PLAYING:
-            gamePanel.getGame().getPlaying().keyPressed(e);
+                gamePanel.getGame().getPlaying().keyPressed(e);
+                break;
+            case OPTION:
+                gamePanel.getGame().getGameOptions().keyPressed(e);
                 break;
             default:
                 break;
@@ -41,12 +45,12 @@ public class KeyBoardInputs implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        switch(GameState.state){
+        switch (GameState.state) {
             case MENU:
-            gamePanel.getGame().getMenu().keyReleased(e);
+                gamePanel.getGame().getMenu().keyReleased(e);
                 break;
             case PLAYING:
-            gamePanel.getGame().getPlaying().keyReleased(e);
+                gamePanel.getGame().getPlaying().keyReleased(e);
                 break;
             default:
                 break;

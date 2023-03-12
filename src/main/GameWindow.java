@@ -8,9 +8,10 @@ import javax.swing.JPanel;
 
 public class GameWindow {
     private JFrame jFrame;
+
     public GameWindow(GamePanel gamePanel) {
         super();
-        jFrame=new JFrame();
+        jFrame = new JFrame();
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.add(gamePanel);
         jFrame.setResizable(false);
@@ -26,10 +27,10 @@ public class GameWindow {
             @Override
             public void windowLostFocus(WindowEvent e) {
                 gamePanel.getGame().windowFocusLost();
-                
+
             }
-            
+
         });
     }
-    
+
 }

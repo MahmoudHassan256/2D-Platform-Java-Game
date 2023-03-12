@@ -15,7 +15,7 @@ public class Menu extends State implements Statemetohds {
     private MenuButton[] buttons = new MenuButton[3];
     private BufferedImage background;
     private BufferedImage backgroundImg;
-    private int menuX,menuY,menuWidth,menuHeight;
+    private int menuX, menuY, menuWidth, menuHeight;
 
     public Menu(Game game) {
         super(game);
@@ -24,18 +24,18 @@ public class Menu extends State implements Statemetohds {
     }
 
     private void loadBackground() {
-        backgroundImg=LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND);
-        menuWidth=(int)(backgroundImg.getWidth()*Game.SCALE);
-        menuHeight=(int)(backgroundImg.getHeight()*Game.SCALE);
-        menuX=Game.GAME_WIDTH / 2-menuWidth/2;
-        menuY=(int)(45*Game.SCALE);
-        background=LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUN_IMAGE);
+        backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND);
+        menuWidth = (int) (backgroundImg.getWidth() * Game.SCALE);
+        menuHeight = (int) (backgroundImg.getHeight() * Game.SCALE);
+        menuX = Game.GAME_WIDTH / 2 - menuWidth / 2;
+        menuY = (int) (45 * Game.SCALE);
+        background = LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND_IMAGE);
     }
 
     private void loadButtons() {
         buttons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (150 * Game.SCALE), 0, GameState.PLAYING);
         buttons[1] = new MenuButton(Game.GAME_WIDTH / 2, (int) (220 * Game.SCALE), 1, GameState.OPTION);
-        buttons[2] = new MenuButton(Game.GAME_WIDTH / 2, (int) (290 * Game.SCALE),2, GameState.QUIT);
+        buttons[2] = new MenuButton(Game.GAME_WIDTH / 2, (int) (290 * Game.SCALE), 2, GameState.QUIT);
 
     }
 
@@ -50,7 +50,7 @@ public class Menu extends State implements Statemetohds {
     @Override
 
     public void draw(Graphics g) {
-        
+
         g.drawImage(background, 0, 0, Game.GAME_WIDTH, Game.GAME_HEIGHT, null);
         g.drawImage(backgroundImg, menuX, menuY, menuWidth, menuHeight, null);
         for (MenuButton menuButton : buttons) {
@@ -77,9 +77,11 @@ public class Menu extends State implements Statemetohds {
     public void mouseReleased(MouseEvent e) {
         for (MenuButton menuButton : buttons) {
             if (isIn(e, menuButton)) {
-                if (menuButton.isMousePressed()) 
+                if (menuButton.isMousePressed())
                     menuButton.applyGameState();
-                
+                if (menuButton.getState() == GameState.PLAYING)
+                    game.getAudioPlayer().setLevelSong(game.getPlaying().getLevelManager().getLvlIndex());
+
                 break;
             }
         }

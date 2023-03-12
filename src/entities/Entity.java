@@ -22,7 +22,6 @@ public abstract class Entity {
     protected float walkSpeed;
 
 
-
     public Entity(float x, float y, int width, int height) {
 
         this.x = x;
@@ -32,23 +31,29 @@ public abstract class Entity {
 
     }
 
-    protected void drawHitBox(Graphics g,int xLvlOffset){
+    protected void drawHitBox(Graphics g, int xLvlOffset) {
         g.setColor(Color.RED);
-        g.drawRect((int)hitBox.x-xLvlOffset,(int)hitBox.y,(int)hitBox.width,(int)hitBox.height);
+        g.drawRect((int) hitBox.x - xLvlOffset, (int) hitBox.y, (int) hitBox.width, (int) hitBox.height);
     }
 
-    protected void initializeHitBox(int width,int height) {
-        hitBox = new Rectangle2D.Float(x,y,(int)(width*Game.SCALE),(int)(height*Game.SCALE));
+    protected void initializeHitBox(int width, int height) {
+        hitBox = new Rectangle2D.Float(x, y, (int) (width * Game.SCALE), (int) (height * Game.SCALE));
     }
 
     public Rectangle2D.Float getHitBox() {
         return hitBox;
     }
+
     protected void drawAttackBox(Graphics g, int xLvlOffset) {
         g.setColor(Color.red);
-        g.drawRect((int)attackBox.x-xLvlOffset, (int)attackBox.y, (int)attackBox.width, (int)attackBox.height);
+        g.drawRect((int) attackBox.x - xLvlOffset, (int) attackBox.y, (int) attackBox.width, (int) attackBox.height);
     }
+
     protected int getAniIndex() {
         return animationIndex;
+    }
+
+    public int getCurrentHealth() {
+        return currentHealth;
     }
 }

@@ -17,7 +17,7 @@ public class GamePanel extends JPanel {
 
     public GamePanel(Game game) {
         super();
-        this.game=game;
+        this.game = game;
         mouseInputs = new MouseInputs(this);
 
         setPanelSize();
@@ -41,7 +41,8 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         game.render(g);
     }
-    public Game getGame(){
+
+    public Game getGame() {
         return game;
     }
 
